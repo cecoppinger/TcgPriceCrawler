@@ -20,6 +20,7 @@ namespace TcgPriceCrawler
             _selectionStrings.Add("buylistMarketPrices", "//td[@class='buylistMarketPrice']/div");
             _selectionStrings.Add("medianPrices", "//td[@class='medianPrice']/div");
             _selectionStrings.Add("cardNames", "//div[@class='productDetail']/a");
+            _selectionStrings.Add("setNames", "//select[@id='set']/option");
         }
 
         public List<CardPrice> DoIt()
@@ -63,11 +64,12 @@ namespace TcgPriceCrawler
         private void LoadSetNames(HtmlWeb webLoader)
         {
             HtmlDocument doc = webLoader.Load(_baseUrl);
-            var nodes = doc.DocumentNode.SelectNodes("//select[@id='set']/option");                  
+            var nodes = doc.DocumentNode.SelectNodes(_selectionStrings["setNames"]);
+            string setName;
             foreach (var node in nodes)
             {
-                string origStr = node.InnerHtml;
-                _setNames.Add(ReplaceEncodedText(origStr));
+                setName = node.InnerHtml;
+                _setNames.Add(ReplaceEncodedText(setName));
             }
         }
 
