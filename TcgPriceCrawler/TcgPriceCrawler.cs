@@ -27,14 +27,6 @@ namespace TcgPriceCrawler
             List<CardPrice> cardPrices = new List<CardPrice>();
             string currentEndpoint;
 
-            //for testing
-
-            //List<string> sets = new List<string>()
-            //{
-            //    "battle-for-zendikar",
-            //    "dragons-maze"
-            //};
-
             foreach(string set in _setNames)
             {
                 currentEndpoint = _baseUrl + "/" + Format(set);
