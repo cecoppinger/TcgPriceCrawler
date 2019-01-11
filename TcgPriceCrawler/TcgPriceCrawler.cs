@@ -45,7 +45,6 @@ namespace TcgPriceCrawler
                     {
                         CardPrice newCard = new CardPrice()
                         {
-                            //NOTE: Not all fields have prices (some of them are empty) which is why we use double.TryParse
                             SetName = set,
                             CardName = ReplaceEncodedText(cardNameNodes[i].InnerHtml.Trim()),
                             MarketPrice = Validate(marketPriceNodes[i]),
